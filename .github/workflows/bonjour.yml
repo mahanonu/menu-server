@@ -5,6 +5,8 @@ jobs:
   dire_bonjour:
     runs-on: ubuntu-20.04
     steps:
+      - run : sudo apt-get update
+              sudo apt-get install cowsay
       - uses: actions/checkout@v2
       - run: ls -l # Liste les fichier du répertoire courant
       - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
