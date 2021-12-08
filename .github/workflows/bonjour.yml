@@ -4,6 +4,9 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/cicd-lectures/gitpod:latest
+      options: --user=root
     steps:
       - run : sudo apt-get update && sudo apt-get install cowsay
       - uses: actions/checkout@v2
