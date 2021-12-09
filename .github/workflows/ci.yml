@@ -1,8 +1,8 @@
-name: Bonjour
+name: CI
 on:
   - push
 jobs:
-  run_maven:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -11,5 +11,8 @@ jobs:
         distribution: 'zulu'
         java-version: '11'
         cache: 'maven'
-    - run: mvn -v
-    - run: mvn help:effective-pom
+    - run: mvn package
+    - uses: actions/upload-artifact@v2
+      with:
+        name: menu-server_jar
+        path: ../target/menu-server.jar
