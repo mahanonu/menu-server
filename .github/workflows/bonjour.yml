@@ -2,13 +2,14 @@ name: Bonjour
 on:
   - push
 jobs:
-  dire_bonjour:
+  run_maven:
     runs-on: ubuntu-20.04
-    container:
-      image: ghcr.io/cicd-lectures/gitpod:latest
-      options: --user=root
     steps:
-      - run : sudo apt-get update && sudo apt-get install cowsay
-      - uses: actions/checkout@v2
-      - run: ls -l # Liste les fichier du répertoire courant
-      - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+        cache: 'maven'
+    - run: mvn -v
+    - run: mvn effective:pom
