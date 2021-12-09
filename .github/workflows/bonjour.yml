@@ -12,4 +12,4 @@ jobs:
         java-version: '11'
         cache: 'maven'
     - run: mvn -v
-    - run: mvn effective-pom
+    - run: mvn help:effective-pom
