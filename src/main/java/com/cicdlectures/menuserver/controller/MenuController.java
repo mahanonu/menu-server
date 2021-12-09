@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cicdlectures.menuserver.dto.MenuDto;
 import com.cicdlectures.menuserver.service.CreateMenuService;
 import com.cicdlectures.menuserver.service.ListMenuService;
-import com.cicdlectures.menuserver.repository.MenuRepository;
 
 @RestController
 public class MenuController {
@@ -24,13 +21,10 @@ public class MenuController {
 
   private final ListMenuService listMenuService;
 
-  private final MenuRepository menuRepository;
-
   @Autowired
-  MenuController(CreateMenuService createMenuService, ListMenuService listMenuService, MenuRepository menuRepository) {
+  MenuController(CreateMenuService createMenuService, ListMenuService listMenuService) {
     this.createMenuService = createMenuService;
     this.listMenuService = listMenuService;
-    this.menuRepository = menuRepository;
   }
 
   @GetMapping(path = "/menus", produces = "application/json")
